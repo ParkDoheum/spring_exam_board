@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8">
+	<title>게시판</title>
+</head>
+<body>
+	<header>
+		<h1>게시판</h1>
+	</header>
+	<section layout:fragment="content">
+		<p>Content here</p>
+	</section>
+	<footer>
+		<p>My footer</p>
+		<p layout:fragment="custom-footer">Custom footer here</p>
+	</footer>
+</body>
+</html>

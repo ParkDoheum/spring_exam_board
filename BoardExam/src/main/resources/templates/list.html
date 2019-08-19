@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xml:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="~{common_layout}">
+<head>
+<title>리스트</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<table>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>날짜</th>		
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="item : ${list}">
+				<td th:text="${item.i}">1</td>    
+				<td th:text="${item.title}">안녕하니껴</td>
+				<td th:text="${item.r_datetime}">2019-10-22</td>		
+			</tr>
+		</tbody>
+		</table>     
+	</section>
+	
+	 <footer>
+    <p layout:fragment="custom-footer">대박쓰~</p>
+  </footer>
+</body>
+</html>
