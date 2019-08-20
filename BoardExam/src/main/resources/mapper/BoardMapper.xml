@@ -21,4 +21,19 @@
 		VALUES
 		(#{title}, #{content})
 	</insert>
+	
+	<update id="updateBoard" parameterType="board">
+		UPDATE t_board
+		<set>
+			<if test='title != null and title != "" '>
+				title = #{title},
+			</if>
+			<if test='content != null and content != "" '>
+				content = #{content}
+			</if>
+		</set>
+		WHERE i = ${i}
+	</update>
 </mapper>
+
+

@@ -27,39 +27,35 @@ public class BoardController {
 		return returnFilePath("list");
 	}
 	
-	@GetMapping("/writeForm")
-	public String writeForm(Model model) {
-		model.addAttribute("boardVO", new BoardVO());
-		return returnFilePath("writeForm");
+	@GetMapping("/regmodForm/{i}")
+	public String writeForm(@PathVariable("i") int i, Model model) {
+		BoardVO vo = null;
+		if(i > 0) { //수정
+			BoardVO param = new BoardVO();
+			param.setI(i);
+			vo = service.getBoard(param);
+		} else {
+			vo = new BoardVO();
+		}
+		
+		model.addAttribute("boardVO", vo);
+		return returnFilePath("regmodForm");
 	}
 	
-	@PostMapping("/write")
-	public RedirectView write(@ModelAttribute BoardVO boardVO) {		
-		System.out.println("title : " + boardVO.getTitle());
-		System.out.println("content : " + boardVO.getContent());
-		service.insertBoard(boardVO);
-		return new RedirectView("list");
-	}
-	
-	@GetMapping("/modForm")
-	public String modForm(@RequestParam int i, Model model) {
-		BoardVO param = new BoardVO();
-		param.setI(i);
-		model.addAttribute("boardVO", service.getBoard(param));
-		System.out.println("i : " + i);
-		return returnFilePath("modForm");
-	}
-	
-	@PutMapping("/mod")
-	public RedirectView mod(@ModelAttribute BoardVO boardVO) {
+	@PostMapping("/regmod")
+	public RedirectView write(@ModelAttribute BoardVO boardVO) {
 		System.out.println("i : " + boardVO.getI());
 		System.out.println("title : " + boardVO.getTitle());
+		System.out.println("content : " + boardVO.getContent());
 		
-		service.modBoard(boardVO);
+		if(boardVO.getI() == 0) { //등록
+			service.insertBoard(boardVO);			
+		} else { //수정
+			service.modBoard(boardVO);
+		}		
 		
 		return new RedirectView("list");
 	}
-	
 	
 	@GetMapping("/detail/{i}")
 	public String detail(@PathVariable("i") int i, Model model) {

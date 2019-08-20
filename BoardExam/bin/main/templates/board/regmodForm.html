@@ -7,11 +7,11 @@
 </head>
 <body>
 	<section layout:fragment="content">
-		<form action="#" th:action="@{mod}" th:object="${boardVO}" th:method="put">
+		<form action="#" th:action="@{../regmod}" th:object="${boardVO}" th:method="post">
 			<input type="hidden" th:field="*{i}">
 			<div> 제목 : <input type="text" th:field="*{title}"></div>
 			<div> 내용 <textarea th:field="*{content}"></textarea></div>
-			<div><input type="submit" value="Submit"></div>
+			<div><input type="submit" th:value="${i == 0 ? '등록' : '수정'}"></div>
 		</form>
 	</section>
 </body>

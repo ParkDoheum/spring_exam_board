@@ -27,7 +27,7 @@ public class BoardService {
 	}
 	
 	public void modBoard(BoardVO vo) {
-		
+		mapper.updateBoard(vo);
 	}
 	
 	
