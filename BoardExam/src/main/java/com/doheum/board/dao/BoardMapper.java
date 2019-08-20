@@ -11,4 +11,8 @@ import com.doheum.board.model.BoardVO;
 @Repository
 public interface BoardMapper {
 	List<BoardVO> getBoardList();
+	BoardVO getBoard(BoardVO vo);
+	
+	void insertBoard(BoardVO vo);
+	
 }

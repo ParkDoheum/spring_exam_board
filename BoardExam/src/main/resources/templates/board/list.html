@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xml:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="~{common_layout}">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="common_layout">
 <head>
 <title>리스트</title>
 </head>
 <body>
+	<header>
+		<h2 layout:fragment="header">하하하</h2>		
+	</header>
 	<section layout:fragment="content">
 		<table>
 		<thead>
@@ -18,15 +21,31 @@
 		<tbody>
 			<tr th:each="item : ${list}">
 				<td th:text="${item.i}">1</td>    
-				<td th:text="${item.title}">안녕하니껴</td>
+				<td>
+				<a th:href="@{'detail/' + ${item.i}}" th:text="${item.title}">
+					안녕하니껴
+				</a>
+				</td>
 				<td th:text="${item.r_datetime}">2019-10-22</td>		
 			</tr>
 		</tbody>
 		</table>     
+		<a href="writeForm">글쓰기</a>
 	</section>
 	
-	 <footer>
-    <p layout:fragment="custom-footer">대박쓰~</p>
-  </footer>
+	<footer>
+		<p layout:fragment="custom-footer">대박쓰~</p>
+	</footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

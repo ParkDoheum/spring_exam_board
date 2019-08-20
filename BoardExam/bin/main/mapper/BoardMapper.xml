@@ -7,4 +7,18 @@
 		*
 		FROM t_board		
 	</select>
+	
+	<select id="getBoard" resultType="board" parameterType="board">
+		SELECT
+		*
+		FROM t_board
+		WHERE i = ${i}
+	</select>
+	
+	<insert id="insertBoard" parameterType="board">
+		INSERT INTO t_board
+		(title, content) 
+		VALUES
+		(#{title}, #{content})
+	</insert>
 </mapper>
